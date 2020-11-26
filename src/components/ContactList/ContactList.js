@@ -1,9 +1,14 @@
 const ContactList = (props) => {
 
+  function handleRemove(e) {
+    const value = e.target.innerHTML;
+    props.handleRemove(value);
+  }
+
   const contacts = props.contacts.map((contact, index) => 
-    (<tr key={index} >
+    (<tr key={index} onClick={handleRemove} >
       <td>{contact.name}</td>
-      <td>{contact.celphone}</td>
+      <td>{contact.phone}</td>
     </tr>)
   );
 

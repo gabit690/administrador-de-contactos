@@ -8,7 +8,7 @@ const AddContactForm = (props) => {
     setName(e.target.value);
   }
 
-  function handleCelphone(e) {
+  function handlePhone(e) {
     setPhone(e.target.value);
   }
 
@@ -17,7 +17,6 @@ const AddContactForm = (props) => {
     props.handleSubmit(name, phone);
   }
 
-
   return (
     <form onSubmit={handleSubmit}>
       <h2>Nuevo contacto</h2>
@@ -25,10 +24,12 @@ const AddContactForm = (props) => {
         Nombre:
         <input type="text" placeholder="Ingrese un nombre" onChange={handleName} maxLength="25" required autoFocus autoComplete="off" />
       </label>
+      <p>{props.errorName ? "(El nombre ya existe)":""}</p>
       <label>
         Celular:
-        <input type="tel" onChange={handleCelphone} required autoComplete="off" />
+        <input type="tel" onChange={handlePhone} pattern="[0-9]{8,10}" required autoComplete="off" />
       </label>
+      <p>{props.errorPhone ? "(Ese número ya fue registrado)":""}</p>
       <button type="submit" >Add</button>
     </form>
   );
