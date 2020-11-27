@@ -22,7 +22,7 @@ const AddContactForm = (props) => {
       <h2>Nuevo contacto</h2>
       <label>
         Nombre:
-        <input type="text" placeholder="Ingrese un nombre" onChange={handleName} maxLength="25" required autoFocus autoComplete="off" />
+        <input type="text" placeholder="Ingrese un nombre" onChange={handleName} maxLength="15" required autoFocus autoComplete="off" />
       </label>
       <p>{props.errorName ? "(El nombre ya existe)":""}</p>
       <label>

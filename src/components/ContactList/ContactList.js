@@ -1,3 +1,5 @@
+import "./ContactList.css";
+
 const ContactList = (props) => {
 
   function handleRemove(e) {
@@ -12,23 +14,26 @@ const ContactList = (props) => {
     </tr>)
   );
 
-  if (props.contacts.length === 0) {
-    return (<p>No tiene contactos :(</p>);
-  } else {
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Teléfono</th>
-          </tr>
-        </thead>
-        <tbody>
-          {contacts}
-        </tbody>
-      </table>
-    );
-  }
+  const contenido = (props.contacts.length === 0) ? <p>No tiene contactos :(</p>:(
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Teléfono</th>
+        </tr>
+      </thead>
+      <tbody>
+        {contacts}
+      </tbody>
+    </table>
+  );
+
+  return (
+    <div className="seccion-contactos">
+      <h2>Lista de Contactos</h2>
+      {contenido}
+    </div>
+  );
 
 };
 

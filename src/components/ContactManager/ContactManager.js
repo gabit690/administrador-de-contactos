@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddContactForm from "../AddContactForm/AddContactForm";
 import ContactList from "../ContactList/ContactList";
+import "./ContactManager.css";
 
 const ContactManager = () => {
 
@@ -36,11 +37,11 @@ const ContactManager = () => {
   }
 
   return (
-    <div>
+    <div className="contenedor-app">
       <AddContactForm handleSubmit={addNewContact} errorName={errorName} errorPhone={errorPhone} />
-      <h2>Lista de Contactos</h2>
       <ContactList contacts={contacts} handleRemove={removeContact} />
-    </div>);
+    </div>
+  );
 };
 
 export default ContactManager;

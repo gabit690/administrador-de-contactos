@@ -1,0 +1,50 @@
+.seccion-contactos {
+  background-color: orchid;
+  padding-bottom: 20px;
+}
+.seccion-contactos p {
+  text-align: center;
+  font-style: italic;
+}
+.seccion-contactos h2 {
+  font-size: 2rem;
+  margin: 0 auto;
+  padding: 10px 0px;
+  text-align: center;
+  background-color: paleturquoise;
+}
+.seccion-contactos table {
+  width: 90%;
+  margin: 0px auto;
+  background-color: paleturquoise;
+  text-align: center;
+  border-collapse: collapse;
+}
+.seccion-contactos table thead tr {
+  background-color: black;
+}
+.seccion-contactos table thead tr th {
+  color: white;
+  padding: 5px 0px;
+  border: 3px solid black;
+}
+.seccion-contactos table thead tr th:nth-child(1) {
+  width: 60%;
+}
+.seccion-contactos table thead tr th:nth-child(2) {
+  width: 40%;
+}
+.seccion-contactos table tbody {
+  background-color: #e4d7b4;
+}
+.seccion-contactos table tbody tr td {
+  border: 3px solid black;
+  padding: 10px 0px;
+}
+.seccion-contactos table tbody tr td:nth-child(1):hover {
+  text-decoration: line-through;
+  background-color: #e6decb;
+  color: red;
+}
+
+/*# sourceMappingURL=ContactList.css.map */
