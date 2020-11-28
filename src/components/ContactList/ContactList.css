@@ -1,5 +1,4 @@
 .seccion-contactos {
-  background-color: orchid;
   padding-bottom: 20px;
 }
 .seccion-contactos p {
@@ -7,11 +6,10 @@
   font-style: italic;
 }
 .seccion-contactos h2 {
-  font-size: 2rem;
   margin: 0 auto;
   padding: 10px 0px;
   text-align: center;
-  background-color: paleturquoise;
+  color: darkblue;
 }
 .seccion-contactos table {
   width: 90%;

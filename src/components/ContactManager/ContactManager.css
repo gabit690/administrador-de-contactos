@@ -1,8 +1,10 @@
 .contenedor-app {
-  background-color: navy;
-  margin: auto;
+  margin: 15px auto;
   min-width: 320px;
   max-width: 600px;
+  border: 10px double #1e7896;
+  box-sizing: border-box;
+  background-color: #52badd;
 }
 
 /*# sourceMappingURL=ContactManager.css.map */

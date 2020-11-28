@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./AddContactForm.css"
 
 const AddContactForm = (props) => {
   const [name, setName] = useState("");
@@ -18,18 +19,18 @@ const AddContactForm = (props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="formulario-contacto">
       <h2>Nuevo contacto</h2>
       <label>
         Nombre:
-        <input type="text" placeholder="Ingrese un nombre" onChange={handleName} maxLength="15" required autoFocus autoComplete="off" />
+        <input type="text" placeholder="Ingrese su nombre" onChange={handleName} maxLength="15" required autoFocus autoComplete="off" />
       </label>
-      <p>{props.errorName ? "(El nombre ya existe)":""}</p>
+      <p className="input-estado">{props.errorName ? "(El nombre ya existe)":""}</p>
       <label>
         Celular:
-        <input type="tel" onChange={handlePhone} pattern="[0-9]{8,10}" required autoComplete="off" />
+        <input type="tel" placeholder="Ingrese su teléfono" onChange={handlePhone} pattern="[0-9]{8,10}" maxLength="15" required autoComplete="off" />
       </label>
-      <p>{props.errorPhone ? "(Ese número ya fue registrado)":""}</p>
+      <p className="input-estado">{props.errorPhone ? "(Ese número ya fue registrado)":""}</p>
       <button type="submit" >Add</button>
     </form>
   );

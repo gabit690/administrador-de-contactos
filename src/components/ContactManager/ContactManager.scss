@@ -1,6 +1,8 @@
 .contenedor-app {
-  background-color: navy;
-  margin: auto;
+  margin: 15px auto;
   min-width: 320px;
   max-width: 600px;
+  border: 10px double rgb(30, 120, 150);
+  box-sizing: border-box;
+  background-color: rgb(82, 186, 221);
 }
