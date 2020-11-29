@@ -4,6 +4,8 @@ import "./AddContactForm.css"
 const AddContactForm = (props) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [errorName, setErrorName] = useState(false);
+  const [errorPhone, setErrorPhone] = useState(false);
 
   function handleName(e) {
     setName(e.target.value);
@@ -15,7 +17,32 @@ const AddContactForm = (props) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.handleSubmit(name, phone);
+        
+    let isNewName = props.checkName(name);
+    let isNewPhone = props.checkPhone(phone);
+
+    const validContact = isNewName && isNewPhone;
+
+    if (validContact) {
+      props.handleSubmit(name, phone);
+      setName("");
+      setPhone("");
+      setErrorName(false);
+      setErrorPhone(false);
+    } else {
+      if (!isNewName) {
+        setErrorName(true);
+      } else {
+        setErrorName(false);
+      }
+      if (!isNewPhone) {
+        setErrorPhone(true);
+      } else {
+        setErrorPhone(false);
+      }
+
+    }
+
   }
 
   return (
@@ -23,14 +50,14 @@ const AddContactForm = (props) => {
       <h2>Nuevo contacto</h2>
       <label>
         Nombre:
-        <input type="text" placeholder="Ingrese su nombre" onChange={handleName} maxLength="15" required autoFocus autoComplete="off" />
+        <input type="text" value={name} className={errorName ? "error-input":""} placeholder="Ingrese su nombre" onChange={handleName} maxLength="15" required autoFocus autoComplete="off" />
       </label>
-      <p className="input-estado">{props.errorName ? "(El nombre ya existe)":""}</p>
+      <p className="input-estado">{errorName ? "El nombre ya existe":""}</p>
       <label>
         Celular:
-        <input type="tel" placeholder="Ingrese su teléfono" onChange={handlePhone} pattern="[0-9]{8,10}" maxLength="15" required autoComplete="off" />
+        <input type="tel" value={phone} className={errorPhone ? "error-input":""} placeholder="Ingrese su teléfono" onChange={handlePhone} pattern="[0-9]{4}(-|\s)?[0-9]{4}|(11|15)(-|\s)?[0-9]{8}" maxLength="15" required autoComplete="off" />
       </label>
-      <p className="input-estado">{props.errorPhone ? "(Ese número ya fue registrado)":""}</p>
+      <p className="input-estado">{errorPhone ? "Ese número ya fue registrado":""}</p>
       <button type="submit" >Add</button>
     </form>
   );

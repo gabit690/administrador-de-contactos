@@ -21,6 +21,10 @@
   width: 220px;
   padding: 5px 5px;
   border-radius: 10px;
+  border: 3px solid #1e7896;
+}
+.formulario-contacto label .error-input {
+  border-color: red;
 }
 .formulario-contacto .input-estado {
   display: flex;

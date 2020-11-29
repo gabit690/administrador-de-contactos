@@ -6,29 +6,19 @@ import "./ContactManager.css";
 const ContactManager = () => {
 
   const [contacts, setContacts] = useState([]);
-  const [errorName, setErrorName] = useState(false);
-  const [errorPhone, setErrorPhone] = useState(false);
+
+  function isNewName(name) {
+    return (!(contacts.some(contact => contact.name === name)));
+  }
+
+  function isNewPhone(phone) {
+    return (!(contacts.some(contact => contact.phone === phone)));
+  }
 
   function addNewContact(name, phone) {
-    
-    let isNewName = !(contacts.some(contact => contact.name === name));
-    let isNewPhone = !(contacts.some(contact => contact.phone === phone));
 
-    const validContact = isNewName && isNewPhone;
-    
-    if (validContact) {
-      let newContact = {name: name, phone: phone}
-      setContacts([...contacts, newContact]);
-      setErrorPhone(false);
-      setErrorName(false);
-    } else {
-      if (!isNewName) {
-        setErrorName(true);
-      }
-      if (!isNewPhone) {
-        setErrorPhone(true);
-      }
-    }
+    let newContact = {name: name, phone: phone}
+    setContacts([...contacts, newContact]);
 
   };
 
@@ -38,7 +28,7 @@ const ContactManager = () => {
 
   return (
     <div className="contenedor-app">
-      <AddContactForm handleSubmit={addNewContact} errorName={errorName} errorPhone={errorPhone} />
+      <AddContactForm handleSubmit={addNewContact} checkName={isNewName} checkPhone={isNewPhone} />
       <ContactList contacts={contacts} handleRemove={removeContact} />
     </div>
   );
