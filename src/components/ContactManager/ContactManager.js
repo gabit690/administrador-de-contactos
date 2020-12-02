@@ -1,35 +1,63 @@
-import { useState } from "react";
 import AddContactForm from "../AddContactForm/AddContactForm";
 import ContactList from "../ContactList/ContactList";
 import "./ContactManager.css";
 
-const ContactManager = () => {
-
-  const [contacts, setContacts] = useState([]);
+const ContactManager = (props) => {
 
   function isNewName(name) {
-    return (!(contacts.some(contact => contact.name === name)));
+    return (!(props.contacts.some(contact => contact.name === name)));
   }
 
   function isNewPhone(phone) {
-    return (!(contacts.some(contact => contact.phone === phone)));
+    return (!(props.contacts.some(contact => contact.phone === phone)));
   }
 
-  function addNewContact(name, phone) {
+  function addNewContact() {
+  
+    let validName = isNewName(props.inputName);
+    let validPhone = isNewPhone(props.inputPhone);
+    let validContact = validName && validPhone;
 
-    let newContact = {name: name, phone: phone}
-    setContacts([...contacts, newContact]);
+    if (validContact) {
+
+      let newContact = {name: props.inputName, phone: props.inputPhone}
+      props.addContact(newContact);
+      props.changeInputName('');
+      props.changeInputPhone('');
+      if (props.errorInputName) props.changeErrorName();
+      if (props.errorInputPhone) props.changeErrorPhone();
+
+    } else {
+
+      if ((!validName && !props.errorInputName) || (validName && props.errorInputName)) {
+        props.changeErrorName();
+      }
+      if ((!validPhone && !props.errorInputPhone) || (validPhone && props.errorInputPhone)) {
+        props.changeErrorPhone();
+      } 
+
+    }
 
   };
 
   function removeContact(name) {
-    setContacts(contacts.filter(contact => contact.name !== name));
+
+    props.removeContact(name);
+
   }
 
   return (
     <div className="contenedor-app">
-      <AddContactForm handleSubmit={addNewContact} checkName={isNewName} checkPhone={isNewPhone} />
-      <ContactList contacts={contacts} handleRemove={removeContact} />
+      <AddContactForm 
+        handleSubmit={addNewContact}
+        inputNameValue = {props.inputName}
+        handleChangeName={props.changeInputName}
+        errorInputName={props.errorInputName}
+        inputPhoneValue = {props.inputPhone}
+        handleChangePhone={props.changeInputPhone}
+        errorInputPhone={props.errorInputPhone}
+      />
+      <ContactList contacts={props.contacts} handleRemove={removeContact} />
     </div>
   );
 };

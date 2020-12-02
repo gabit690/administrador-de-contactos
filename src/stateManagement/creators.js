@@ -28,17 +28,15 @@ const changeInputPhone = (newInputPhone) => {
   };
 };
 
-const changeErrorName = (errorValue) => {
+const changeErrorName = () => {
   return {
     type: CHANGE_ERROR_NAME,
-    errorValue
   };
 };
 
-const changeErrorPhone = (errorValue) => {
+const changeErrorPhone = () => {
   return {
     type: CHANGE_ERROR_PHONE,
-    errorValue
   };
 };
 

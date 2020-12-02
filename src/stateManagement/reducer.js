@@ -33,12 +33,12 @@ const reducer = (state = initialState, action) => {
     case CHANGE_ERROR_NAME:
       return {
         ...state,
-        errorInputName: !action.errorValue
+        errorInputName: !state.errorInputName
       };
     case CHANGE_ERROR_PHONE:
       return {
         ...state,
-        errorInputPhone: !action.errorValue
+        errorInputPhone: !state.errorInputPhone
       };
     default:
       return state;

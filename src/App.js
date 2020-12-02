@@ -1,6 +1,6 @@
 import { createStore } from "redux";
-import reducer from "./reducer.js";
-import WrappedComponent from "./WrappedComponent";
+import reducer from "./stateManagement/reducer.js";
+import WrappedComponent from "./stateManagement/WrappedComponent";
 import { Provider } from "react-redux";
 
 const store = createStore(reducer);
