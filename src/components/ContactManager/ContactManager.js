@@ -2,62 +2,56 @@ import AddContactForm from "../AddContactForm/AddContactForm";
 import ContactList from "../ContactList/ContactList";
 import "./ContactManager.css";
 
-const ContactManager = (props) => {
-  
+const ContactManager = ({contacts, inputName, inputPhone, errorInputName, errorInputPhone, addContact, removeContact, changeInputName, changeInputPhone, changeErrorName, changeErrorPhone}) => {
+
   function isNewName(name) {
-    return (!(props.contacts.some(contact => contact.name === name)));
+    return (!(contacts.some(contact => contact.name === name)));
   }
 
   function isNewPhone(phone) {
-    return (!(props.contacts.some(contact => contact.phone === phone)));
+    return (!(contacts.some(contact => contact.phone === phone)));
   }
 
   function addNewContact() {
   
-    let validName = isNewName(props.inputName);
-    let validPhone = isNewPhone(props.inputPhone);
+    let validName = isNewName(inputName);
+    let validPhone = isNewPhone(inputPhone);
     let validContact = validName && validPhone;
 
     if (validContact) {
 
-      let newContact = {name: props.inputName, phone: props.inputPhone}
-      props.addContact(newContact);
-      props.changeInputName('');
-      props.changeInputPhone('');
-      if (props.errorInputName) props.changeErrorName();
-      if (props.errorInputPhone) props.changeErrorPhone();
+      let newContact = {name: inputName, phone: inputPhone}
+      addContact(newContact);
+      changeInputName('');
+      changeInputPhone('');
+      if (errorInputName) changeErrorName();
+      if (errorInputPhone) changeErrorPhone();
 
     } else {
 
-      if ((!validName && !props.errorInputName) || (validName && props.errorInputName)) {
-        props.changeErrorName();
+      if ((!validName && !errorInputName) || (validName && errorInputName)) {
+        changeErrorName();
       }
-      if ((!validPhone && !props.errorInputPhone) || (validPhone && props.errorInputPhone)) {
-        props.changeErrorPhone();
+      if ((!validPhone && !errorInputPhone) || (validPhone && errorInputPhone)) {
+        changeErrorPhone();
       } 
 
     }
 
   };
 
-  function removeContact(name) {
-
-    props.removeContact(name);
-
-  }
-
   return (
     <div className="contenedor-app">
       <AddContactForm 
         handleSubmit={addNewContact}
-        inputNameValue = {props.inputName}
-        handleChangeName={props.changeInputName}
-        errorInputName={props.errorInputName}
-        inputPhoneValue = {props.inputPhone}
-        handleChangePhone={props.changeInputPhone}
-        errorInputPhone={props.errorInputPhone}
+        inputNameValue = {inputName}
+        handleChangeName={changeInputName}
+        errorInputName={errorInputName}
+        inputPhoneValue = {inputPhone}
+        handleChangePhone={changeInputPhone}
+        errorInputPhone={errorInputPhone}
       />
-      <ContactList contacts={props.contacts} handleRemove={removeContact} />
+      <ContactList contactsData={contacts} handleRemove={removeContact} />
     </div>
   );
 };

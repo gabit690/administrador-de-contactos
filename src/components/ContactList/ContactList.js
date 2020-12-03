@@ -1,20 +1,20 @@
 import "./ContactList.css";
 
-const ContactList = (props) => {
+const ContactList = ({contactsData, handleRemove}) => {
 
-  function handleRemove(e) {
+  function handleRemoveContact(e) {
     const value = e.target.innerHTML;
-    props.handleRemove(value);
+    handleRemove(value);
   }
 
-  const contacts = (props.contacts).map((contact, index) => 
-    (<tr key={index} onClick={handleRemove} >
+  const contacts = (contactsData).map((contact, index) => 
+    (<tr key={index} onClick={handleRemoveContact} >
       <td>{contact.name}</td>
       <td>{contact.phone}</td>
     </tr>)
   );
 
-  const contenido = (props.contacts.length === 0) ? <p>No tiene contactos :(</p>:(
+  const contenido = (contacts.length === 0) ? <p>No tiene contactos :(</p>:(
     <table>
       <thead>
         <tr>

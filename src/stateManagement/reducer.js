@@ -1,14 +1,6 @@
 import { combineReducers } from "redux";
 import {ADD_CONTACT, REMOVE_CONTACT, CHANGE_INPUT_NAME, CHANGE_INPUT_PHONE, CHANGE_ERROR_NAME, CHANGE_ERROR_PHONE} from "./actions.js";
 
-const initialState = {
-  contacts: [{name: "Prueba", phone: 11115555}],
-  inputName: '',
-  inputPhone: '',
-  errorInputName: false,
-  errorInputPhone: false
-};
-
 const contacts = (state = [], action) => {
   switch (action.type) {
     case ADD_CONTACT:
