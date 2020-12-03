@@ -5,10 +5,10 @@ import ContactManager from "../components/ContactManager/ContactManager";
 const mapStateToProps = (state) => {
   return ({
     contacts: state.contacts,
-    inputName: state.inputName,
-    inputPhone: state.inputPhone,
-    errorInputName: state.errorInputName,
-    errorInputPhone: state.errorInputPhone
+    inputName: state.inputs.inputName,
+    inputPhone: state.inputs.inputPhone,
+    errorInputName: state.errors.errorInputName,
+    errorInputPhone: state.errors.errorInputPhone
   });
 };
 

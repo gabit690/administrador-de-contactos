@@ -1,25 +1,27 @@
+import { combineReducers } from "redux";
 import {ADD_CONTACT, REMOVE_CONTACT, CHANGE_INPUT_NAME, CHANGE_INPUT_PHONE, CHANGE_ERROR_NAME, CHANGE_ERROR_PHONE} from "./actions.js";
 
 const initialState = {
-  contacts: [],
+  contacts: [{name: "Prueba", phone: 11115555}],
   inputName: '',
   inputPhone: '',
   errorInputName: false,
   errorInputPhone: false
 };
 
-const reducer = (state = initialState, action) => {
+const contacts = (state = [], action) => {
   switch (action.type) {
     case ADD_CONTACT:
-      return {
-        ...state,
-        contacts: [...state.contacts, action.newContact]
-      };
+      return [...state, action.newContact];
     case REMOVE_CONTACT:
-      return {
-        ...state,
-        contacts: [...state.contacts.filter(contact => contact.name !== action.contactName)]
-      };
+      return [...state.filter(contact => contact.name !== action.contactName)];
+    default:
+      return state;
+  };
+};
+
+const inputs = (state = {inputName: '', inputPhone: ''}, action) => {
+  switch (action.type) {
     case CHANGE_INPUT_NAME:
       return {
         ...state,
@@ -30,6 +32,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         inputPhone: action.newInputPhone
       };
+    default:
+      return state;
+  };
+};
+
+const errors = (state = {errorInputName: false, errorInputPhone: false}, action) => {
+  switch (action.type) {
     case CHANGE_ERROR_NAME:
       return {
         ...state,
@@ -45,4 +54,10 @@ const reducer = (state = initialState, action) => {
   };
 };
 
-export default reducer;
+const rootReducer = combineReducers({
+  contacts,
+  inputs,
+  errors
+});
+
+export default rootReducer;

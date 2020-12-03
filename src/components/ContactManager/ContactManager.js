@@ -3,7 +3,7 @@ import ContactList from "../ContactList/ContactList";
 import "./ContactManager.css";
 
 const ContactManager = (props) => {
-
+  
   function isNewName(name) {
     return (!(props.contacts.some(contact => contact.name === name)));
   }
