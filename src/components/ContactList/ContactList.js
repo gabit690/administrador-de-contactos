@@ -1,20 +1,20 @@
 import "./ContactList.css";
 
-const ContactList = ({contactsData, handleRemove}) => {
+const ContactList = ({contacts, removeContact}) => {
 
   function handleRemoveContact(e) {
     const value = e.target.innerHTML;
-    handleRemove(value);
+    removeContact(value);
   }
 
-  const contacts = (contactsData).map((contact, index) => 
+  const contactsTable = (contacts).map((contact, index) => 
     (<tr key={index} onClick={handleRemoveContact} >
       <td>{contact.name}</td>
       <td>{contact.phone}</td>
     </tr>)
   );
 
-  const contenido = (contacts.length === 0) ? <p>No tiene contactos :(</p>:(
+  const contenido = (contactsTable.length === 0) ? <p>No tiene contactos :(</p>:(
     <table>
       <thead>
         <tr>
@@ -23,7 +23,7 @@ const ContactList = ({contactsData, handleRemove}) => {
         </tr>
       </thead>
       <tbody>
-        {contacts}
+        {contactsTable}
       </tbody>
     </table>
   );

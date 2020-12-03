@@ -1,12 +1,20 @@
 import { createStore } from "redux";
 import rootReducer from "./stateManagement/reducer.js";
-import WrappedComponent from "./stateManagement/WrappedComponent";
+import WrappedAddForm from "./stateManagement/WrappedAddForm";
+import WrappedContactList from "./stateManagement/WrappedContactList";
 import { Provider } from "react-redux";
+import "./App.css";
 
 const store = createStore(rootReducer);
 
 function App() {
-  return <Provider store={store}><WrappedComponent /></Provider>;
+  return (
+    <div className="contenedor-app">
+      <Provider store={store}>
+        <WrappedAddForm />
+        <WrappedContactList />
+      </Provider>
+    </div>);
 }
 
 export default App;

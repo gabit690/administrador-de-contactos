@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import {addContact, removeContact, changeInputName, changeInputPhone, changeErrorName, changeErrorPhone} from "./creators"
-import ContactManager from "../components/ContactManager/ContactManager";
+import {addContact, changeInputName, changeInputPhone, changeErrorName, changeErrorPhone} from "./creators"
+import AddContactForm from "../components/AddContactForm/AddContactForm";
 
 const mapStateToProps = (state) => {
   return ({
@@ -14,13 +14,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   addContact,
-  removeContact, 
   changeInputName,
   changeInputPhone,
   changeErrorName,
   changeErrorPhone
 };
 
-const WrappedComponent = connect(mapStateToProps, mapDispatchToProps)(ContactManager);
+const WrappedAddContactForm = connect(mapStateToProps, mapDispatchToProps)(AddContactForm);
 
-export default WrappedComponent;
+export default WrappedAddContactForm;
