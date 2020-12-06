@@ -7,14 +7,14 @@ const ContactList = ({contacts, removeContact}) => {
     removeContact(value);
   }
 
-  const contactsTable = (contacts).map((contact, index) => 
-    (<tr key={index} onClick={handleRemoveContact} >
-      <td>{contact.name}</td>
+  const contactsRows = (contacts).map((contact, index) => 
+    (<tr key={index}>
+      <td onClick={handleRemoveContact}>{contact.name}</td>
       <td>{contact.phone}</td>
     </tr>)
   );
 
-  const contenido = (contactsTable.length === 0) ? <p>No tiene contactos :(</p>:(
+  const contenido = (contactsRows.length === 0) ? <p>No tiene contactos :(</p>:(
     <table>
       <thead>
         <tr>
@@ -23,7 +23,7 @@ const ContactList = ({contacts, removeContact}) => {
         </tr>
       </thead>
       <tbody>
-        {contactsTable}
+        {contactsRows}
       </tbody>
     </table>
   );

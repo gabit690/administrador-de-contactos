@@ -1,0 +1,13 @@
+.contenedor-gabit {
+  min-width: 400px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(39, 59, 86);
+}
+
+p {
+  text-align: center;
+  font-size: 1.3rem;
+  color: white;
+}

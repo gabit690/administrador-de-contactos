@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Gabit from "./Gabit";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <Gabit mensaje="Hecho por Gabit" anio="2020" emoji="&#x1F47E;" />
   </React.StrictMode>,
   document.getElementById('root')
 );
